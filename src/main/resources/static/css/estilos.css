@@ -28,3 +28,40 @@
 p {
     word-spacing: 5px;
 }
+
+.ejemploCajas {
+    border: 2px solid black;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    
+    /* para un solo parametro = aplica para los 4 lados */
+    /* padding-top*/
+    width: 50%;
+    text-align: center;
+    margin: 0 auto; /*para centrar un div automatico*/
+}
+
+a:link {
+    color: crimson;
+    background-color: aquamarine;
+    border: 2px solid aquamarine;
+    margin: 10px;
+    padding: 4px;
+    border-radius: 25px;    
+}
+
+a:visited {
+    color: black;
+}
+
+a:hover {
+    color: gold;
+    background-color: silver;
+    transition: 1.5s;
+}
+
+a:active {
+    color: white;
+    background-color: purple;
+}
+
