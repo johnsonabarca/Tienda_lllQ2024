@@ -33,3 +33,4 @@ build/
 .vscode/
 /src/main/resources/static/audios/musica.mp3
 /src/main/resources/static/videos/torpedo.mp4
+/src/main/resources/firebase/techshoplll-firebase-adminsdk-jqu5o-56a4185c66.json
