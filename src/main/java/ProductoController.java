@@ -1,8 +1,7 @@
 
-package com.prueba.controller;
 import com.prueba.domain.Producto;
-import com.prueba.service.CategoriaService;
 import com.prueba.service.ProductoService;
+
 import com.prueba.service.impl.FirebaseStorageServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,25 +13,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-
-
 @Controller
 @RequestMapping("/producto")
 public class ProductoController {
     
     @Autowired
     private ProductoService productoService;
-    
-    @Autowired
-    private CategoriaService categoriaService;
 
     @GetMapping("/listado")
     public String inicio(Model model) {
         var productos = productoService.getProductos(false);
-        var categorias = categoriaService.getCategorias(true);
         model.addAttribute("productos", productos);
         model.addAttribute("totalProductos", productos.size());
-         model.addAttribute("categorias", categorias);
         return "/producto/listado";
     }
     
@@ -49,13 +41,13 @@ public class ProductoController {
             @RequestParam("imagenFile") MultipartFile imagenFile) {        
         if (!imagenFile.isEmpty()) {
             productoService.save(producto);
-           producto.setRutaImagen(
+            producto.setRutaImagen(
                     firebaseStorageService.cargaImagen(
                             imagenFile, 
                             "producto", 
-                           producto.getIdProducto()));
+                            producto.getIdProducto()));
         }
-        productoService.save(producto);
+       productoService.save(producto);
         return "redirect:/producto/listado";
     }
 
@@ -67,11 +59,8 @@ public class ProductoController {
 
     @GetMapping("/modificar/{idProducto}")
     public String productoModificar(Producto producto, Model model) {
-        producto= productoService.getProducto(producto);
-       var categorias = categoriaService.getCategorias(true);
+        producto = productoService.getProducto(producto);
         model.addAttribute("producto", producto);
-        model.addAttribute("categorias", categorias);
         return "/producto/modifica";
     }
 }
-
