@@ -1,11 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
- */
 package com.prueba.service;
 
 
-import com.prueba.domain.Producto;
+import com.tienda.domain.Producto;
 import java.util.List;
 
 
@@ -19,7 +15,9 @@ public interface ProductoService {
     public void save(Producto producto);
     
  
-    public void delete(Producto producto);
+    public void delete(Producto producto); 
+    
+    public List<Producto> findByPrecioBetweenOrderByDescripcion(double precioInf, double precioSup);
     
 }
 

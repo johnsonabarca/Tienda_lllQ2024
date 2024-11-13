@@ -2,10 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.prueba.service.impl;
+package com.tienda.service.impl;
 
-import com.prueba.dao.ProductoDao;
-import com.prueba.domain.Producto;
+import com.tienda.dao.ProductoDao;
+import com.tienda.domain.Producto;
 import com.prueba.service.ProductoService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;

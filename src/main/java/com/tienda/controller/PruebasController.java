@@ -1,6 +1,6 @@
-package com.prueba.controller;
+package com.tienda.controller;
 
-import com.prueba.domain.Categoria;
+import com.tienda.domain.Categoria;
 import com.prueba.service.CategoriaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

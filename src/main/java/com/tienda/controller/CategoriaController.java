@@ -1,10 +1,8 @@
+package com.tienda.controller;
 
-
-package com.prueba.controller;
-
-import com.prueba.domain.Categoria;
+import com.tienda.domain.Categoria;
 import com.prueba.service.CategoriaService;
-import com.prueba.service.impl.FirebaseStorageServiceImpl;
+import com.tienda.service.impl.FirebaseStorageServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
