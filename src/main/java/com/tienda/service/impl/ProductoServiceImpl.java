@@ -11,7 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 
 @Service
-
 public class ProductoServiceImpl implements ProductoService {
     
     @Autowired
@@ -59,6 +58,18 @@ public class ProductoServiceImpl implements ProductoService {
     @Transactional(readOnly=true)    
     public List<Producto> metodoNativo(double precioInf, double precioSup) {
         return productoDao.metodoNativo(precioInf, precioSup);
+    }
+
+    @Override
+    @Transactional(readOnly=true)
+    public List<Producto> buscarPorExistenciasJPQL(int existenciasMin, int existenciasMax) {
+        return productoDao.buscarPorExistenciasJPQL(existenciasMin, existenciasMax);
+    }
+
+    @Override
+    @Transactional(readOnly=true)
+    public List<Producto> buscarPorExistenciasNativo(int existenciasMin, int existenciasMax) {
+        return productoDao.buscarPorExistenciasNativo(existenciasMin, existenciasMax); 
     }
  
 }

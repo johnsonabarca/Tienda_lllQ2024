@@ -21,5 +21,14 @@ public interface ProductoDao extends JpaRepository <Producto, Long> {
             value="SELECT * FROM producto where producto.precio BETWEEN :precioInf AND :precioSup ORDER BY producto.descripcion ASC")
     public List<Producto> metodoNativo(@Param("precioInf") double precioInf, @Param("precioSup") double precioSup);
     
-    
+    // Nuevo método para buscar por existencias
+    @Query("SELECT a FROM Producto a WHERE a.existencias BETWEEN :existenciasMin AND :existenciasMax ORDER BY a.descripcion ASC")
+    public List<Producto> buscarPorExistenciasJPQL(@Param("existenciasMin") int existenciasMin, @Param("existenciasMax") int existenciasMax);
+
+    // Método con SQL nativo para buscar por existencias
+    @Query(nativeQuery = true,
+           value = "SELECT * FROM producto WHERE producto.existencias BETWEEN :existenciasMin AND :existenciasMax ORDER BY producto.descripcion ASC")
+    public List<Producto> buscarPorExistenciasNativo(@Param("existenciasMin") int existenciasMin, @Param("existenciasMax") int existenciasMax);
 }
+
+    

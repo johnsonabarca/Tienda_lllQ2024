@@ -22,6 +22,12 @@ public interface ProductoService {
     
     //Lista de productos utilizando consultas con SQL Nativo
     public List<Producto> metodoNativo(double precioInf, double precioSup);
+    
+    // Nuevo método: Lista de productos filtrados por existencias utilizando JPQL
+    public List<Producto> buscarPorExistenciasJPQL(int existenciasMin, int existenciasMax);
+
+    // Nuevo método: Lista de productos filtrados por existencias utilizando SQL Nativo
+    public List<Producto> buscarPorExistenciasNativo(int existenciasMin, int existenciasMax);
    
 }
 

@@ -41,6 +41,7 @@ public class PruebasController {
         model.addAttribute("categorias", categorias);
         return "/pruebas/listado";
     }
+
     //Los métodos siguientes son para la prueba de consultas ampliadas
     @GetMapping("/consulta")
     public String listado2(Model model) {
@@ -51,28 +52,28 @@ public class PruebasController {
 
     @PostMapping("/query1")
     public String consultaQuery1(@RequestParam(value = "precioInf") double precioInf,
-            @RequestParam(value = "precioSup") double precioSup, Model model) {
+        @RequestParam(value = "precioSup") double precioSup, Model model) {
         List<Producto> productos = productoService.findByPrecioBetweenOrderByDescripcion(precioInf, precioSup);
         model.addAttribute("productos", productos);
         model.addAttribute("precioInf", precioInf);
         model.addAttribute("precioSup", precioSup);
         return "/pruebas/listado2";
     }
-    
+
     @PostMapping("/query2")
     public String consultaQuery2(@RequestParam(value = "precioInf") double precioInf,
-            @RequestParam(value = "precioSup") double precioSup, Model model) {
+        @RequestParam(value = "precioSup") double precioSup, Model model) {
         List<Producto> productos = productoService.metodoJPQL(precioInf, precioSup);
-        model.addAttribute("productos", productos);        
+        model.addAttribute("productos", productos);
         model.addAttribute("totalProductos", productos.size());
         model.addAttribute("precioInf", precioInf);
         model.addAttribute("precioSup", precioSup);
         return "/pruebas/listado2";
     }
-    
+
     @PostMapping("/query3")
     public String consultaQuery3(@RequestParam(value = "precioInf") double precioInf,
-            @RequestParam(value = "precioSup") double precioSup, Model model) {
+        @RequestParam(value = "precioSup") double precioSup, Model model) {
         List<Producto> productos = productoService.metodoNativo(precioInf, precioSup);
         model.addAttribute("productos", productos);
         model.addAttribute("totalProductos", productos.size());
@@ -81,5 +82,30 @@ public class PruebasController {
         return "/pruebas/listado2";
     }
 
+    @PostMapping("/queryExistenciasJPQL")
+    public String consultaExistenciasJPQL(
+        @RequestParam(value = "existenciasMin") int existenciasMin,
+        @RequestParam(value = "existenciasMax") int existenciasMax,
+        Model model) {
+        List<Producto> productos = productoService.buscarPorExistenciasJPQL(existenciasMin, existenciasMax);
+        model.addAttribute("productos", productos);
+        model.addAttribute("totalProductos", productos.size());
+        model.addAttribute("existenciasMin", existenciasMin);
+        model.addAttribute("existenciasMax", existenciasMax);
+        return "/pruebas/listadoExistencias";
+    }
+
+    @PostMapping("/queryExistenciasNativo")
+    public String consultaExistenciasNativo(
+        @RequestParam(value = "existenciasMin") int existenciasMin,
+        @RequestParam(value = "existenciasMax") int existenciasMax,
+        Model model) {
+        List<Producto> productos = productoService.buscarPorExistenciasNativo(existenciasMin, existenciasMax);
+        model.addAttribute("productos", productos);
+        model.addAttribute("totalProductos", productos.size());
+        model.addAttribute("existenciasMin", existenciasMin);
+        model.addAttribute("existenciasMax", existenciasMax);
+        return "/pruebas/listadoExistencias";
+    }
 
 }
